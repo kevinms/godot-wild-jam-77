@@ -19,7 +19,7 @@ extends CharacterBody3D
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
 @export_range(0.0, 10.0) var pad_sensitivity = 4.0
 @export var tilt_upper_limit := PI / 3.0
-@export var tilt_lower_limit := -PI / 8.0
+@export var tilt_lower_limit := -PI / 2.5
 
 ## Each frame, we find the height of the ground below the player and store it here.
 ## The camera uses this to keep a fixed height while the player jumps, for example.
