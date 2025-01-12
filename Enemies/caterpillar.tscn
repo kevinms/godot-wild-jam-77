@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://brbe7jod5bup2"]
+
+[ext_resource type="PackedScene" uid="uid://bgs2756bljk6o" path="res://Player/caterpillar.blend" id="1_mnv1n"]
+
+[node name="caterpillar" instance=ExtResource("1_mnv1n")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0.104512, -2.37113e-07, -1.24588e-07, 0.994524)
+bones/2/rotation = Quaternion(0.0447158, -1.1909e-07, -6.92971e-08, 0.999)
+bones/3/rotation = Quaternion(0.102921, 1.18577e-07, -1.595e-07, 0.994689)
+bones/4/rotation = Quaternion(0.0130401, -4.37077e-08, -1.92241e-08, 0.999915)
+bones/5/rotation = Quaternion(0.00704171, 4.37102e-08, -1.0381e-08, 0.999975)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.0159687, 1.7008e-13, 2.28434e-08, 0.999873)
+bones/7/rotation = Quaternion(0.0666553, -8.36749e-14, -9.53513e-08, 0.997776)
+bones/8/rotation = Quaternion(-0.00925735, -5.96034e-07, 1.87607e-08, 0.999957)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0468787, -1.19066e-07, -1.28533e-07, 0.998901)
+bones/9/scale = Vector3(1, 1, 1)
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="1"]
+root_bone = &"Bone.004"
+tip_bone = &"Bone.009"
+target_node = NodePath("../Node3D")
+
+[node name="Node3D" type="Node3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -0.158692, -0.987328, 0, 0.987328, -0.158692, 0, 9.78866, 8.07302)
