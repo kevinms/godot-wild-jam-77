@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c33j5yfi5hbdh"]
+
+[ext_resource type="Script" path="res://Enemies/slime.gd" id="1_8xgo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xgo2"]
+albedo_color = Color(0.270588, 0.964706, 0.431373, 1)
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_rte3k"]
+material = SubResource("StandardMaterial3D_8xgo2")
+radial_segments = 16
+rings = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xgo2"]
+
+[node name="Slime" type="SoftBody3D"]
+mesh = SubResource("SphereMesh_rte3k")
+total_mass = 1.01
+linear_stiffness = 0.1
+pressure_coefficient = 50.0
+script = ExtResource("1_8xgo2")
+
+[node name="Area3D" type="Area3D" parent="."]
+wind_force_magnitude = 5.714
+wind_source_path = NodePath("../Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8xgo2")
+
+[node name="Node3D" type="Node3D" parent="."]

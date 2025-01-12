@@ -1,6 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgblw6qba8867"]
+[gd_scene load_steps=10 format=3 uid="uid://cgblw6qba8867"]
 
-[ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://pause_menu.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://c1quwslku742l" path="res://Materials/abstract_5-4K/4K-abstract_5-diffuse.jpg" id="1_adklf"]
+[ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://UI/pause_menu.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b40m2h11vosx0" path="res://Player/player.tscn" id="2_xqvsl"]
+[ext_resource type="Texture2D" uid="uid://dghsh2sivt2y4" path="res://Materials/abstract_5-4K/4K-abstract_5-normal.jpg" id="2_yextv"]
+[ext_resource type="Texture2D" uid="uid://n7sc6yh6bghg" path="res://Materials/abstract_5-4K/4K-abstract_5-specular.jpg" id="3_2f2g8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -15,15 +19,11 @@ sky = SubResource("Sky_ig7tw")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dm0k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
-albedo_texture = SubResource("NoiseTexture2D_7dm0k")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
-material = SubResource("StandardMaterial3D_ig7tw")
-radial_segments = 9
-rings = 6
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4g246"]
+albedo_texture = ExtResource("1_adklf")
+roughness_texture = ExtResource("3_2f2g8")
+normal_enabled = true
+normal_texture = ExtResource("2_yextv")
 
 [node name="Node3D" type="Node3D"]
 
@@ -38,17 +38,12 @@ shadow_enabled = true
 transform = Transform3D(42.0569, 0, 0, 0, 1, 0, 0, 0, 36.61, 0, -1.04709, 0)
 use_collision = true
 size = Vector3(1, 0.0283203, 1)
-
-[node name="SoftBody3D" type="SoftBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91562, 0)
-mesh = SubResource("CapsuleMesh_7dm0k")
-total_mass = 1.01
-linear_stiffness = 0.1
-pressure_coefficient = 100.0
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.925031, 0.379892, 0, -0.379892, 0.925031, 0, 1.40807, 3.06859)
+material = SubResource("StandardMaterial3D_4g246")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_ig7tw")]
+
+[node name="Player" parent="." instance=ExtResource("2_xqvsl")]
+
+[node name="Spawner" type="Node3D" parent="."]

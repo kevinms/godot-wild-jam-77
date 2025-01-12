@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfac5317te6tl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_texture = SubResource("NoiseTexture2D_7dm0k")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
+material = SubResource("StandardMaterial3D_ig7tw")
+radial_segments = 9
+rings = 6
+
+[node name="Slime" type="SoftBody3D"]
+mesh = SubResource("CapsuleMesh_7dm0k")
+total_mass = 1.01
+linear_stiffness = 0.1
+pressure_coefficient = 50.0
