@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx2y3sxd7yxjh"]
+
+[ext_resource type="Script" path="res://Enemies/Caterpillar/CaterpillarController.gd" id="1_7j1td"]
+[ext_resource type="PackedScene" uid="uid://brbe7jod5bup2" path="res://Enemies/Caterpillar/Caterpillar.tscn" id="1_nv1td"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qga2o"]
+
+[node name="CaterpillarController" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_7j1td")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qga2o")
+
+[node name="Caterpillar" parent="." instance=ExtResource("1_nv1td")]

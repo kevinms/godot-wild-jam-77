@@ -15,7 +15,8 @@ material = SubResource("StandardMaterial3D_hac68")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 radius = 0.542067
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_mask = 3
 script = ExtResource("1_lx3gw")
 move_speed = 10.0
 stopping_speed = 5.0

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://brbe7jod5bup2"]
+[gd_scene load_steps=7 format=3 uid="uid://d3edo0ta46s2p"]
 
-[ext_resource type="PackedScene" uid="uid://bgs2756bljk6o" path="res://Enemies/Caterpillar/caterpillar.blend" id="1_mnv1n"]
-[ext_resource type="Script" path="res://Enemies/Caterpillar/Caterpillar.gd" id="2_ry0iw"]
+[ext_resource type="PackedScene" uid="uid://bgs2756bljk6o" path="res://Enemies/Caterpillar/caterpillar.blend" id="1_w4yge"]
+[ext_resource type="Script" path="res://Enemies/Caterpillar/Caterpillar.gd" id="2_v0akj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4gdnr"]
 radius = 1.61129
@@ -68,8 +68,8 @@ _data = {
 "Test": SubResource("Animation_v2q3h")
 }
 
-[node name="Caterpillar" instance=ExtResource("1_mnv1n")]
-script = ExtResource("2_ry0iw")
+[node name="Caterpillar" instance=ExtResource("1_w4yge")]
+script = ExtResource("2_v0akj")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/1/rotation = Quaternion(0.00704171, 1.94702e-07, -1.14443e-08, 0.999975)

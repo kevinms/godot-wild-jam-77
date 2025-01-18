@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgblw6qba8867"]
+[gd_scene load_steps=16 format=3 uid="uid://cgblw6qba8867"]
 
 [ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://UI/pause_menu.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://cq3u5gbb8dkm5" path="res://Materials/LavaTiles.tres" id="1_myye2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8htfwtbksj1" path="res://Materials/coast_sand_04/coast_sand_04_rough_4k.jpg" id="4_u5eij"]
 [ext_resource type="PackedScene" uid="uid://brbe7jod5bup2" path="res://Enemies/Caterpillar/Caterpillar.tscn" id="6_vpkta"]
 [ext_resource type="PackedScene" uid="uid://cgf1ro5wure86" path="res://Level/Temple.tscn" id="7_e6mty"]
+[ext_resource type="PackedScene" uid="uid://bx2y3sxd7yxjh" path="res://Enemies/Caterpillar/CaterpillarController.tscn" id="8_fltoj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y6fos"]
 
@@ -108,12 +109,15 @@ show_percentage = false
 
 [node name="Player" parent="." instance=ExtResource("2_xqvsl")]
 
-[node name="Spawner" type="Node3D" parent="."]
+[node name="CaterpillarController" parent="." instance=ExtResource("8_fltoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99677, 4.01872, 0)
 
-[node name="Caterpillar" parent="." instance=ExtResource("6_vpkta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -5)
+[node name="Spawner" type="Node3D" parent="."]
 
 [node name="Waypoints" type="Node3D" parent="."]
 
 [node name="Temple" parent="." instance=ExtResource("7_e6mty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.84561, 0)
+
+[node name="Caterpillar" parent="." instance=ExtResource("6_vpkta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.78535, 2.50658, 0)

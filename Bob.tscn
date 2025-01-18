@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://1lkplyjpp56r"]
+
+[ext_resource type="Script" path="res://Enemies/Caterpillar/CaterpillarController.gd" id="1_hwr5x"]
+[ext_resource type="PackedScene" uid="uid://d3edo0ta46s2p" path="res://Enemies/Caterpillar/TestCat.tscn" id="2_s0nia"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tv3df"]
+
+[node name="Bob" type="CharacterBody3D"]
+script = ExtResource("1_hwr5x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_tv3df")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="Caterpillar" parent="." instance=ExtResource("2_s0nia")]
