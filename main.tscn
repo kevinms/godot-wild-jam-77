@@ -1,32 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgblw6qba8867"]
+[gd_scene load_steps=15 format=3 uid="uid://cgblw6qba8867"]
 
-[ext_resource type="Texture2D" uid="uid://c1quwslku742l" path="res://Materials/abstract_5-4K/4K-abstract_5-diffuse.jpg" id="1_adklf"]
 [ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://UI/pause_menu.tscn" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://cq3u5gbb8dkm5" path="res://Materials/LavaTiles.tres" id="1_myye2"]
+[ext_resource type="Texture2D" uid="uid://cg2cfvem03ua5" path="res://Materials/coast_sand_04/coast_sand_04_diff_4k.jpg" id="2_7kmux"]
 [ext_resource type="PackedScene" uid="uid://b40m2h11vosx0" path="res://Player/player.tscn" id="2_xqvsl"]
-[ext_resource type="Texture2D" uid="uid://dghsh2sivt2y4" path="res://Materials/abstract_5-4K/4K-abstract_5-normal.jpg" id="2_yextv"]
-[ext_resource type="Texture2D" uid="uid://n7sc6yh6bghg" path="res://Materials/abstract_5-4K/4K-abstract_5-specular.jpg" id="3_2f2g8"]
+[ext_resource type="Texture2D" uid="uid://8lpqw3er0h4l" path="res://Materials/coast_sand_04/coast_sand_04_nor_gl_4k.jpg" id="3_7qql8"]
+[ext_resource type="Texture2D" uid="uid://ck8htfwtbksj1" path="res://Materials/coast_sand_04/coast_sand_04_rough_4k.jpg" id="4_u5eij"]
 [ext_resource type="PackedScene" uid="uid://brbe7jod5bup2" path="res://Enemies/Caterpillar/Caterpillar.tscn" id="6_vpkta"]
+[ext_resource type="PackedScene" uid="uid://cgf1ro5wure86" path="res://Level/Temple.tscn" id="7_e6mty"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y6fos"]
 
-[sub_resource type="Sky" id="Sky_ig7tw"]
-sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+[sub_resource type="Sky" id="Sky_6863n"]
+sky_material = SubResource("ProceduralSkyMaterial_y6fos")
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
 background_mode = 2
-sky = SubResource("Sky_ig7tw")
+sky = SubResource("Sky_6863n")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4g246"]
-albedo_texture = ExtResource("1_adklf")
-roughness_texture = ExtResource("3_2f2g8")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3vmg"]
+albedo_color = Color(0.995041, 0.813257, 0.581261, 1)
+albedo_texture = ExtResource("2_7kmux")
+roughness_texture = ExtResource("4_u5eij")
 normal_enabled = true
-normal_texture = ExtResource("2_yextv")
+normal_texture = ExtResource("3_7qql8")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pkm8"]
+bg_color = Color(0.0509804, 0.0509804, 0.0509804, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agivn"]
+bg_color = Color(0.552941, 0.12549, 0.156863, 1)
+
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -35,13 +44,65 @@ environment = SubResource("Environment_0xm2m")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="FloorSquare" type="CSGBox3D" parent="."]
 transform = Transform3D(42.0569, 0, 0, 0, 1, 0, 0, 0, 36.61, 0, -1.04709, 0)
+visible = false
 use_collision = true
 size = Vector3(1, 0.0283203, 1)
-material = SubResource("StandardMaterial3D_4g246")
+material = ExtResource("1_myye2")
+
+[node name="FloorDisc" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05021, 0)
+use_collision = true
+radius = 53.1981
+sides = 32
+material = SubResource("StandardMaterial3D_d3vmg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EnemyHealth" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerHealthLabel" type="Label" parent="CanvasLayer/EnemyHealth"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 99.0
+offset_bottom = 40.0
+text = "You"
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/EnemyHealth"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 45.0
+offset_right = 160.0
+offset_bottom = 56.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2pkm8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_agivn")
+value = 60.0
+show_percentage = false
+
+[node name="EnemyHealthLabel" type="Label" parent="CanvasLayer/EnemyHealth"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 540.0
+offset_right = 418.0
+offset_bottom = 563.0
+text = "Caterpillar"
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="CanvasLayer/EnemyHealth"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 568.0
+offset_right = 851.0
+offset_bottom = 575.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2pkm8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_agivn")
+value = 60.0
+show_percentage = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_ig7tw")]
 
@@ -53,3 +114,6 @@ material = SubResource("StandardMaterial3D_4g246")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -5)
 
 [node name="Waypoints" type="Node3D" parent="."]
+
+[node name="Temple" parent="." instance=ExtResource("7_e6mty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.84561, 0)
