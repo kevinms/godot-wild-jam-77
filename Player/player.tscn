@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b40m2h11vosx0"]
+[gd_scene load_steps=10 format=3 uid="uid://b40m2h11vosx0"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_lx3gw"]
 [ext_resource type="Script" path="res://Player/skin.gd" id="2_nrode"]
 [ext_resource type="AudioStream" uid="uid://ci8dfdai78238" path="res://Audio/hurt.wav" id="3_dgiqw"]
 [ext_resource type="AudioStream" uid="uid://dbeej5355jxka" path="res://Audio/jump.wav" id="4_fgrjy"]
 [ext_resource type="PackedScene" uid="uid://bjfd15t6iw8wj" path="res://Player/character.blend" id="5_b21my"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr7cv"]
+size = Vector3(1, 1, 10.325)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hac68"]
 albedo_color = Color(0.218848, 0.0273517, 0.00901468, 1)
@@ -27,6 +30,29 @@ script = ExtResource("2_nrode")
 
 [node name="character" parent="Skin" instance=ExtResource("5_b21my")]
 transform = Transform3D(0.26966, 0, 0, 0, 0.26966, 0, 0, 0, 0.26966, 0.00578362, 0.10044, -0.21516)
+
+[node name="Skeleton3D" parent="Skin/character/Armature" index="0"]
+bones/10/rotation = Quaternion(0.260313, -9.19892e-16, -6.20634e-08, 0.965524)
+bones/11/rotation = Quaternion(0.14545, 0.00801629, 0.822822, 0.549312)
+bones/12/rotation = Quaternion(0.232365, -0.121942, 0.43109, 0.863306)
+bones/13/rotation = Quaternion(0.130961, 0.169364, 0.17587, 0.960851)
+bones/14/rotation = Quaternion(-0.391337, 0.035601, -0.0212807, 0.919312)
+bones/16/rotation = Quaternion(-0.0287365, 0.18791, -0.0477071, 0.980606)
+bones/18/rotation = Quaternion(0.615375, 0.363085, 0.519908, -0.468166)
+bones/22/rotation = Quaternion(0.615375, -0.363085, -0.519908, -0.468166)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skin/character/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.910512, -0.0475395, 0.41074, -0.12468, -0.915565, -0.382355, 0.394236, -0.39935, 0.827706, -0.572931, 0.0833862, 0.179518)
+bone_name = "Hand.R"
+bone_idx = 14
+
+[node name="Area3D" type="Area3D" parent="Skin/character/Armature/Skeleton3D/BoneAttachment3D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skin/character/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(1.00001, -1.62606e-08, -1.05138e-07, -1.79932e-06, 0.99727, 0.0738465, 1.49012e-07, -0.0738474, 0.99727, -3.77017e-07, 0.732176, 4.60826)
+shape = SubResource("BoxShape3D_fr7cv")
 
 [node name="Eye1" type="MeshInstance3D" parent="Skin"]
 transform = Transform3D(0.267935, 0, 0, 0, 0.267935, 0, 0, 0, 0.267935, 0.227198, 0.550627, 0.411827)
@@ -62,3 +88,8 @@ stream = ExtResource("3_dgiqw")
 stream = ExtResource("4_fgrjy")
 
 [node name="DustParticles" type="GPUParticles3D" parent="."]
+
+[connection signal="body_entered" from="Skin/character/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="Skin/character/AnimationPlayer" to="Skin" method="_on_animation_player_animation_finished"]
+
+[editable path="Skin/character"]

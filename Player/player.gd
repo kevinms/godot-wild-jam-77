@@ -95,6 +95,13 @@ func _physics_process(delta: float) -> void:
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
 
+	var is_just_attacked := Input.is_action_just_pressed("attack")
+	if is_just_attacked and !_skin.is_attacking():
+		_skin.attack()
+	
+	if _skin.is_attacking():
+		move_direction = Vector3.ZERO
+
 	# To not orient the character too abruptly, we filter movement inputs we
 	# consider when turning the skin. This also ensures we have a normalized
 	# direction for the rotation basis.
@@ -134,3 +141,8 @@ func _physics_process(delta: float) -> void:
 
 	_was_on_floor_last_frame = is_on_floor()
 	move_and_slide()
+
+
+func _on_area_3d_body_entered(body):
+	if _skin.is_attacking():
+		print("hit", body)
