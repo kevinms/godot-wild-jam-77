@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgblw6qba8867"]
+[gd_scene load_steps=11 format=3 uid="uid://cgblw6qba8867"]
 
 [ext_resource type="Texture2D" uid="uid://c1quwslku742l" path="res://Materials/abstract_5-4K/4K-abstract_5-diffuse.jpg" id="1_adklf"]
 [ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://UI/pause_menu.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b40m2h11vosx0" path="res://Player/player.tscn" id="2_xqvsl"]
 [ext_resource type="Texture2D" uid="uid://dghsh2sivt2y4" path="res://Materials/abstract_5-4K/4K-abstract_5-normal.jpg" id="2_yextv"]
 [ext_resource type="Texture2D" uid="uid://n7sc6yh6bghg" path="res://Materials/abstract_5-4K/4K-abstract_5-specular.jpg" id="3_2f2g8"]
+[ext_resource type="PackedScene" uid="uid://brbe7jod5bup2" path="res://Enemies/Caterpillar/Caterpillar.tscn" id="6_vpkta"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -47,3 +48,8 @@ material = SubResource("StandardMaterial3D_4g246")
 [node name="Player" parent="." instance=ExtResource("2_xqvsl")]
 
 [node name="Spawner" type="Node3D" parent="."]
+
+[node name="Caterpillar" parent="." instance=ExtResource("6_vpkta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -5)
+
+[node name="Waypoints" type="Node3D" parent="."]

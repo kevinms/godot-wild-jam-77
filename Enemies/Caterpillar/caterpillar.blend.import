@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bgs2756bljk6o"
-path="res://.godot/imported/caterpillar.blend-f677230ab620fe0b29684340c399abdf.scn"
+path="res://.godot/imported/caterpillar.blend-cd45ec024a2b02a4bc4080cd9fc7367f.scn"
 
 [deps]
 
-source_file="res://Player/caterpillar.blend"
-dest_files=["res://.godot/imported/caterpillar.blend-f677230ab620fe0b29684340c399abdf.scn"]
+source_file="res://Enemies/Caterpillar/caterpillar.blend"
+dest_files=["res://.godot/imported/caterpillar.blend-cd45ec024a2b02a4bc4080cd9fc7367f.scn"]
 
 [params]
 

@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://brbe7jod5bup2"]
+
+[ext_resource type="PackedScene" uid="uid://bgs2756bljk6o" path="res://Enemies/Caterpillar/caterpillar.blend" id="1_mnv1n"]
+[ext_resource type="Script" path="res://Enemies/Caterpillar/Caterpillar.gd" id="2_ry0iw"]
+
+[node name="Caterpillar" instance=ExtResource("1_mnv1n")]
+script = ExtResource("2_ry0iw")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0.00704171, 1.94702e-07, -1.14443e-08, 0.999975)
+bones/1/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.0666554, -4.75769e-07, -1.27135e-07, 0.997776)
+bones/4/rotation = Quaternion(-0.00925738, -4.76835e-07, 2.64856e-08, 0.999957)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.0468787, 1.1909e-07, -1.50887e-07, 0.998901)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.933055, 0.156801, -0.0536589, 0.319284)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.451677, -0.146826, 0.0164546, 0.879863)
+bones/8/rotation = Quaternion(0.932969, -0.157409, 0.0537079, 0.319229)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.451591, 0.147226, -0.0169143, 0.879832)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.777789, 0.171138, -0.129963, 0.590649)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.168738, 0.00424807, 0.066602, 0.983399)
+bones/12/rotation = Quaternion(0.778216, -0.164682, 0.129719, 0.591973)
+bones/13/rotation = Quaternion(-0.158858, 0.12072, -0.0835691, 0.976323)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.230816, -0.0793132, 0.0443584, 0.968744)
+bones/16/rotation = Quaternion(0.801944, -0.150917, 0.108086, 0.567827)
+bones/16/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.833507, 0.148642, -0.0934254, 0.523873)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.249383, -0.0800024, 0.0410296, 0.964222)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.833449, -0.149418, 0.0934094, 0.523747)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.249348, 0.0805828, -0.041558, 0.96416)
+bones/22/rotation = Quaternion(0.763113, 0.147524, -0.119427, 0.617764)
+bones/25/rotation = Quaternion(-0.00141535, 0.00102644, -0.0584341, 0.99829)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.81342, 0.150783, -0.102396, 0.552383)
+bones/27/rotation = Quaternion(-0.197833, -0.0652157, 0.0470717, 0.97693)
+bones/27/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(-0.197812, 0.0658031, -0.047636, 0.976868)
+bones/30/rotation = Quaternion(-0.724977, 0, 0, 0.688773)
+bones/32/rotation = Quaternion(-0.104835, 0, 0, 0.99449)
+bones/34/rotation = Quaternion(0.34968, -0.132948, 0.790509, -0.484917)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(0.167366, -0.456314, 0.539982, 0.687157)
+bones/35/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.16587, 0.456664, -0.540343, 0.687004)
+bones/37/scale = Vector3(1, 1, 1)
+bones/38/scale = Vector3(1, 1, 1)
+bones/41/scale = Vector3(1, 1, 1)
+bones/43/rotation = Quaternion(0.244589, -0.133001, 0.114424, 0.953621)
+bones/44/rotation = Quaternion(-0.784721, 0.0421598, 0.297971, 0.541894)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(0.196008, -0.129415, 0.0816298, 0.968591)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(-0.791606, 0.0392043, 0.261392, 0.550905)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/scale = Vector3(1, 1, 1)
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="1"]
+root_bone = &"Bone.004"
+tip_bone = &"Bone.009"
+target_node = NodePath("../Node3D")
+
+[node name="Node3D" type="Node3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.0223735, -0.99975, 0, 0.99975, 0.0223735, 0.877523, 0.720853, 6.89031)
