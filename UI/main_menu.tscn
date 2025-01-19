@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cudxkqth8q7ij"]
+[gd_scene load_steps=5 format=3 uid="uid://cudxkqth8q7ij"]
 
 [ext_resource type="Shader" path="res://UI/blur.gdshader" id="1_6elrt"]
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_oobmu"]
+[ext_resource type="AudioStream" uid="uid://cj1ctis7a04dy" path="res://SFX/music/481652__themoviemacher__shadow-maker-library.wav" id="3_dkc8v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eya7x"]
 shader = ExtResource("1_6elrt")
@@ -68,6 +69,10 @@ text = "Quit"
 [node name="Fullscreen" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Fullscreen"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dkc8v")
+autoplay = true
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]

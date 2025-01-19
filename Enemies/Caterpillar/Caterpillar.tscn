@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brbe7jod5bup2"]
+[gd_scene load_steps=10 format=3 uid="uid://brbe7jod5bup2"]
 
 [ext_resource type="PackedScene" uid="uid://bgs2756bljk6o" path="res://Enemies/Caterpillar/caterpillar.blend" id="1_mnv1n"]
 [ext_resource type="Script" path="res://Enemies/Caterpillar/Caterpillar.gd" id="2_ry0iw"]
@@ -36,7 +36,88 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_v2q3h"]
 resource_name = "Test"
 length = 2.0
-loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Target:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.36667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.877523, 3.61539, 5.69669), Vector3(5.9661, 2.89726, 1.80901), Vector3(-0.114181, 3.61539, 5.69669), Vector3(0.877523, 3.61539, 5.69669)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Target:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.36667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.54842, 0, 0), Vector3(0.207734, -0.312204, -0.953195), Vector3(0.778283, 0.250686, 1.1428), Vector3(1.54842, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nww8x"]
+resource_name = "Strike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Target:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.54842, 0, 0), Vector3(0.49932, -2.58546e-08, 0.865806), Vector3(2.11427, 0, 0), Vector3(1.54842, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Target:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.877523, 3.61539, 5.69669), Vector3(0.877523, 5.41724, 2.39308), Vector3(0.877523, 0.358757, 7.03481), Vector3(0.877523, 3.61539, 5.69669)]
+}
+
+[sub_resource type="Animation" id="Animation_gul5y"]
+resource_name = "Wiggle"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Target:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.766667, 1.13333, 1.43333, 1.73333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.877523, 3.61539, 5.69669), Vector3(0.877523, 6.72928, 1.728), Vector3(-0.757609, 6.5869, 1.65451), Vector3(1.75935, 6.60638, 1.66456), Vector3(-0.757609, 6.5869, 1.65451), Vector3(1.75935, 6.60638, 1.66456), Vector3(0.877523, 3.61539, 5.69669)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Target:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.766667, 1.13333, 1.43333, 1.73333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.54842, 0, 0), Vector3(0.476159, 0, 0), Vector3(0.476159, -2.5708e-08, 0.697172), Vector3(0.569651, -0.0776657, -0.643669), Vector3(0.476159, -2.5708e-08, 0.697172), Vector3(0.476159, 6.90292e-09, -0.604826), Vector3(1.54842, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0n7ei"]
+resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +125,10 @@ tracks/0/path = NodePath("Armature/Skeleton3D/Target:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.733333, 1.36667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.877523, 3.61539, 5.69669), Vector3(3.50076, 3.61539, 5.69669), Vector3(-0.114181, 3.61539, 5.69669), Vector3(0.877523, 3.61539, 5.69669)]
+"values": [Vector3(0.877523, 3.61539, 5.69669), Vector3(0.42806, 2.84288, 5.71398), Vector3(0.877523, 3.61539, 5.69669)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,16 +137,19 @@ tracks/1/path = NodePath("Armature/Skeleton3D/Target:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.733333, 1.36667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1.54842, 0, 0), Vector3(1.54842, 0, 0), Vector3(1.54842, 0, 0), Vector3(1.54842, 0, 0)]
+"values": [Vector3(1.54842, 0, 0), Vector3(1.52136, 1.10142, 1.10093), Vector3(1.54842, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7npjk"]
 _data = {
+"Idle": SubResource("Animation_0n7ei"),
 "RESET": SubResource("Animation_8lcfk"),
-"Test": SubResource("Animation_v2q3h")
+"Strike": SubResource("Animation_nww8x"),
+"Test": SubResource("Animation_v2q3h"),
+"Wiggle": SubResource("Animation_gul5y")
 }
 
 [node name="Caterpillar" instance=ExtResource("1_mnv1n")]
@@ -140,7 +224,7 @@ target_node = NodePath("../Target")
 transform = Transform3D(1, 0, 0, 0, 0.0223745, -0.99975, 0, 0.99975, 0.0223745, 0.877523, 3.61539, 5.69669)
 
 [node name="BoneAttachment4" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, -1.81993e-06, -1.81993e-06, 0, -1, 0, 1, 0, -0.0203328, 0.433244, -0.0202017)
+transform = Transform3D(0.996717, 0.0801479, 0.0114541, -0.0114577, 0.279687, -0.960023, -0.0801474, 0.95674, 0.279687, -0.0203328, 0.433244, -0.0202017)
 bone_name = "Bone.004"
 bone_idx = 0
 
@@ -151,7 +235,7 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_4gdnr")
 
 [node name="BoneAttachment5" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, -4.08562e-14, -1.43051e-06, -1.43037e-06, -0.0140831, -0.999901, -2.0146e-08, 0.999901, -0.0140831, -0.0203328, 0.433244, 1.03316)
+transform = Transform3D(0.995286, 0.09545, 0.017177, -0.0158338, 0.334661, -0.942205, -0.095682, 0.937492, 0.334595, 0.0640921, 0.727856, 0.987594)
 bone_name = "Bone.005"
 bone_idx = 1
 
@@ -162,7 +246,7 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_4gdnr")
 
 [node name="BoneAttachment6" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -2.4869e-14, -1.43051e-06, -1.43028e-06, 0.0178543, -0.999841, 2.55408e-08, 0.999841, 0.0178543, -0.0203328, 0.41991, 1.97986)
+transform = Transform3D(0.992062, 0.122822, 0.0269752, -0.0291665, 0.433411, -0.900724, -0.12232, 0.892788, 0.433553, 0.154463, 1.04471, 1.8752)
 bone_name = "Bone.006"
 bone_idx = 2
 
@@ -173,7 +257,7 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_4gdnr")
 
 [node name="BoneAttachment7" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, 7.53175e-13, -2.38417e-06, -2.36827e-06, -0.115297, -0.993331, -2.7489e-07, 0.993331, -0.115297, -0.0203328, 0.446578, 3.47323)
+transform = Transform3D(0.985981, 0.156483, 0.057917, -0.039493, 0.556103, -0.830174, -0.162116, 0.816249, 0.554487, 0.337911, 1.69206, 3.20868)
 bone_name = "Bone.007"
 bone_idx = 3
 
@@ -184,7 +268,7 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_4gdnr")
 
 [node name="BoneAttachment8" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 7.74492e-13, -3.33788e-06, -3.32218e-06, -0.0968872, -0.995295, -3.23399e-07, 0.995295, -0.0968872, -0.0203328, 0.273239, 4.96661)
+transform = Transform3D(0.980743, 0.179825, 0.0761972, -0.0584218, 0.642411, -0.76413, -0.18636, 0.744964, 0.640546, 0.573168, 2.5281, 4.43583)
 bone_name = "Bone.008"
 bone_idx = 4
 
@@ -195,7 +279,7 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_4gdnr")
 
 [node name="BoneAttachment9" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 1.47793e-12, -3.09944e-06, -3.04318e-06, -0.189675, -0.981847, -5.87888e-07, 0.981847, -0.189675, -0.0203328, 0.126568, 6.47332)
+transform = Transform3D(1, -2.23517e-08, -7.45058e-09, -7.45058e-09, 0.0223744, -0.999749, -1.11759e-08, 0.999749, 0.0223745, 0.845393, 3.50061, 5.56358)
 bone_name = "Bone.009"
 bone_idx = 5
 
@@ -209,4 +293,9 @@ shape = SubResource("SphereShape3D_4gdnr")
 libraries = {
 "": SubResource("AnimationLibrary_7npjk")
 }
-autoplay = "Test"
+
+[node name="Timer" type="Timer" parent="." index="2"]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 4.5
 var chrysalisScene = preload("res://Enemies/Chrysalis/ChrysalisController.tscn")
 
 func _ready():
+	$Gibs.emitting = false
 	Bus.enemy_healthbar_set_label.emit("Caterpillar")
 	Bus.enemy_healthbar_set_value.emit(100)
 	

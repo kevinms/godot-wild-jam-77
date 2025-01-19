@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-const ATTACK_SPEED = 1.3
+const ATTACK_SPEED = 1.5
 
 enum Attack {SWING, RESET, NONE}
 
@@ -28,7 +28,9 @@ func is_attacking() -> bool:
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Attack":
 		if attack_state == Attack.SWING:
+			print("swing done")
 			attack_state = Attack.RESET
 			$character/AnimationPlayer.play("Attack", -1, -ATTACK_SPEED, true)
-		if attack_state == Attack.RESET:
+		elif attack_state == Attack.RESET:
+			print("reset done")
 			attack_state = Attack.NONE

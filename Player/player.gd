@@ -64,9 +64,11 @@ func _on_area_3d_body_entered(body):
 		
 		if body.is_in_group("caterpillar"):
 			Bus.caterpillar_hit.emit(rng.randf_range(3.0, 10.0))
+			$HitSound2.play()
 		if body.is_in_group("chrysalis"):
-			print("hit chtwwwwwwwwwwwwwwwwwww")
-			Bus.chrysalis_hit.emit(rng.randf_range(3.0, 10.0))
+			print("hit chrysalis")
+			Bus.chrysalis_hit.emit(rng.randf_range(10.0, 20.0))
+			$HitSound2.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -101,6 +103,7 @@ func _physics_process(delta: float) -> void:
 
 	var is_just_attacked := Input.is_action_just_pressed("attack")
 	if is_just_attacked and !_skin.is_attacking():
+		print("attack eligible")
 		_skin.attack()
 	if _skin.is_attacking():
 		move_direction = Vector3.ZERO

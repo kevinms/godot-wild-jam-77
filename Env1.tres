@@ -1,0 +1,18 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ykt5tipp2bsv"]
+
+[ext_resource type="Texture2D" uid="uid://cf5bpotkorqf4" path="res://Level/EveningSkyHDRI032A_2K-HDR.exr" id="1_00v7e"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7xc8u"]
+panorama = ExtResource("1_00v7e")
+energy_multiplier = 4.0
+
+[sub_resource type="Sky" id="Sky_6863n"]
+sky_material = SubResource("PanoramaSkyMaterial_7xc8u")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_6863n")
+ambient_light_energy = 6.86
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
