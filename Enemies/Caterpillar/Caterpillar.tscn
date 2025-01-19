@@ -128,6 +128,8 @@ bones/48/rotation = Quaternion(-0.791606, 0.0392043, 0.261392, 0.550905)
 bones/48/scale = Vector3(1, 1, 1)
 bones/49/scale = Vector3(1, 1, 1)
 
+[node name="Caterpillar" parent="Armature/Skeleton3D" index="0" groups=["caterpillar"]]
+
 [node name="SkeletonIK3D" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 2.27374e-13, 1, 0, 0, 0, 1, 1.86265e-09, -1.63913e-07, 0)
 root_bone = &"Bone.004"
@@ -142,7 +144,7 @@ transform = Transform3D(1, 0, -1.81993e-06, -1.81993e-06, 0, -1, 0, 1, 0, -0.020
 bone_name = "Bone.004"
 bone_idx = 0
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment4" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment4" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment4/BoneBody" index="0"]
@@ -153,7 +155,7 @@ transform = Transform3D(1, -4.08562e-14, -1.43051e-06, -1.43037e-06, -0.0140831,
 bone_name = "Bone.005"
 bone_idx = 1
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment5" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment5" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment5/BoneBody" index="0"]
@@ -164,7 +166,7 @@ transform = Transform3D(1, -2.4869e-14, -1.43051e-06, -1.43028e-06, 0.0178543, -
 bone_name = "Bone.006"
 bone_idx = 2
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment6" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment6" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment6/BoneBody" index="0"]
@@ -175,7 +177,7 @@ transform = Transform3D(1, 7.53175e-13, -2.38417e-06, -2.36827e-06, -0.115297, -
 bone_name = "Bone.007"
 bone_idx = 3
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment7" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment7" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment7/BoneBody" index="0"]
@@ -186,7 +188,7 @@ transform = Transform3D(1, 7.74492e-13, -3.33788e-06, -3.32218e-06, -0.0968872, 
 bone_name = "Bone.008"
 bone_idx = 4
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment8" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment8" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment8/BoneBody" index="0"]
@@ -197,7 +199,7 @@ transform = Transform3D(1, 1.47793e-12, -3.09944e-06, -3.04318e-06, -0.189675, -
 bone_name = "Bone.009"
 bone_idx = 5
 
-[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment9" index="0"]
+[node name="BoneBody" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment9" index="0" groups=["caterpillar"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment9/BoneBody" index="0"]

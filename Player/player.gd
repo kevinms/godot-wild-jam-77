@@ -42,27 +42,31 @@ var _camera_input_direction := Vector2.ZERO
 @onready var _jump_sound: AudioStreamPlayer3D = $JumpSound
 @onready var _dust_particles: GPUParticles3D = $DustParticles
 
+var health = 100
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
-	pass
-	#Events.kill_plane_touched.connect(func on_kill_plane_touched() -> void:
-		#global_position = _start_position
-		#velocity = Vector3.ZERO
-		#_skin.idle()
-		#set_physics_process(true)
-	#)
-	#Events.flag_reached.connect(func on_flag_reached() -> void:
-		#set_physics_process(false)
-		#_skin.idle()
-		#_dust_particles.emitting = false
-	#)
+	
+	$HitSound.play()
+	
+	Bus.caterpillar_hit.connect(func on_player_hit(damage) -> void:
+		print("Player hit")
+		health -= damage
+		Bus.player_healthbar_set_value.emit(health)
+		$HitAnimation.play("hit")
+		if health < 0.0:
+			$DeathAnimation.play("death")
+	)
 
-
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("ui_cancel"):
-		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	#elif event.is_action_pressed("left_click"):
-		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+func _on_area_3d_body_entered(body):
+	if _skin.is_attacking():
+		print("hit ", body)
+		
+		if body.is_in_group("caterpillar"):
+			Bus.caterpillar_hit.emit(rng.randf_range(3.0, 10.0))
+		if body.is_in_group("chrysalis"):
+			print("hit chtwwwwwwwwwwwwwwwwwww")
+			Bus.chrysalis_hit.emit(rng.randf_range(3.0, 10.0))
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -98,9 +102,10 @@ func _physics_process(delta: float) -> void:
 	var is_just_attacked := Input.is_action_just_pressed("attack")
 	if is_just_attacked and !_skin.is_attacking():
 		_skin.attack()
-	
 	if _skin.is_attacking():
 		move_direction = Vector3.ZERO
+		#if is_on_floor():
+		#	velocity = Vector3.ZERO
 
 	# To not orient the character too abruptly, we filter movement inputs we
 	# consider when turning the skin. This also ensures we have a normalized
@@ -141,8 +146,3 @@ func _physics_process(delta: float) -> void:
 
 	_was_on_floor_last_frame = is_on_floor()
 	move_and_slide()
-
-
-func _on_area_3d_body_entered(body):
-	if _skin.is_attacking():
-		print("hit", body)

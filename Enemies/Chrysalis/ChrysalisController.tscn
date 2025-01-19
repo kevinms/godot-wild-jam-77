@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://drokqxldqrwlg"]
+
+[ext_resource type="PackedScene" uid="uid://gklar7wo4mhs" path="res://Enemies/Chrysalis/Chrysalis.blend" id="1_1bk1y"]
+[ext_resource type="Script" path="res://Enemies/Chrysalis/ChrysalisController.gd" id="1_aj6bu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f761t"]
+radius = 3.1544
+height = 10.7603
+
+[sub_resource type="Animation" id="Animation_qc7ip"]
+resource_name = "hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krpm6"]
+_data = {
+"hit": SubResource("Animation_qc7ip")
+}
+
+[sub_resource type="Animation" id="Animation_mrxod"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulgop"]
+_data = {
+"death": SubResource("Animation_mrxod")
+}
+
+[node name="ChrysalisController" type="RigidBody3D" groups=["chrysalis"]]
+collision_layer = 2
+script = ExtResource("1_aj6bu")
+
+[node name="Chrysalis" parent="." instance=ExtResource("1_1bk1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0371189, 0, -0.0520408)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43367, 0)
+shape = SubResource("CapsuleShape3D_f761t")
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_krpm6")
+}
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ulgop")
+}
+
+[connection signal="animation_finished" from="DeathAnimation" to="." method="_on_death_animation_animation_finished"]
+
+[editable path="Chrysalis"]

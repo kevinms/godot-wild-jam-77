@@ -1,7 +1,34 @@
 extends CharacterBody3D
 
+var health = 100
+
 const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
+
+var chrysalisScene = preload("res://Enemies/Chrysalis/ChrysalisController.tscn")
+
+func _ready():
+	Bus.enemy_healthbar_set_label.emit("Caterpillar")
+	Bus.enemy_healthbar_set_value.emit(100)
+	
+	Bus.caterpillar_hit.connect(func on_caterpillar_hit(damage) -> void:
+		print("Received hit")
+		health -= damage
+		Bus.enemy_healthbar_set_value.emit(health)
+		$HitAnimation.play("hit")
+		if health < 0.0:
+			$DeathAnimation.play("death")
+	)
+	
+	#$DeathAnimation.connect("animation_finished")
+	
+func _on_death_animation_animation_finished(anim_name):
+	queue_free()
+	
+	var chrysalis = chrysalisScene.instantiate()
+	get_parent().add_child(chrysalis)
+	chrysalis.global_position = global_position
+
 
 func _physics_process(delta):
 	# Add the gravity.

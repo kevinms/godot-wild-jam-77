@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b40m2h11vosx0"]
+[gd_scene load_steps=16 format=3 uid="uid://b40m2h11vosx0"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_lx3gw"]
 [ext_resource type="Script" path="res://Player/skin.gd" id="2_nrode"]
 [ext_resource type="AudioStream" uid="uid://ci8dfdai78238" path="res://Audio/hurt.wav" id="3_dgiqw"]
 [ext_resource type="AudioStream" uid="uid://dbeej5355jxka" path="res://Audio/jump.wav" id="4_fgrjy"]
 [ext_resource type="PackedScene" uid="uid://bjfd15t6iw8wj" path="res://Player/character.blend" id="5_b21my"]
+[ext_resource type="AudioStream" uid="uid://bhe8422x8ow7h" path="res://SFX/hit2.ogg" id="6_mw0t0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fr7cv"]
 size = Vector3(1, 1, 10.325)
@@ -17,6 +18,26 @@ material = SubResource("StandardMaterial3D_hac68")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 radius = 0.542067
+
+[sub_resource type="Animation" id="Animation_lvobn"]
+resource_name = "hit"
+
+[sub_resource type="Animation" id="Animation_kgoew"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mq15"]
+_data = {
+"death": SubResource("Animation_kgoew"),
+"hit": SubResource("Animation_lvobn")
+}
+
+[sub_resource type="Animation" id="Animation_cb1u0"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1t3y2"]
+_data = {
+"death": SubResource("Animation_cb1u0")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 3
@@ -32,17 +53,17 @@ script = ExtResource("2_nrode")
 transform = Transform3D(0.26966, 0, 0, 0, 0.26966, 0, 0, 0, 0.26966, 0.00578362, 0.10044, -0.21516)
 
 [node name="Skeleton3D" parent="Skin/character/Armature" index="0"]
-bones/10/rotation = Quaternion(0.260313, -9.19892e-16, -6.20634e-08, 0.965524)
-bones/11/rotation = Quaternion(0.14545, 0.00801629, 0.822822, 0.549312)
-bones/12/rotation = Quaternion(0.232365, -0.121942, 0.43109, 0.863306)
-bones/13/rotation = Quaternion(0.130961, 0.169364, 0.17587, 0.960851)
+bones/10/rotation = Quaternion(0.000149473, -6.35275e-22, -3.56372e-11, 1)
+bones/11/rotation = Quaternion(0.0307483, -0.0695851, 0.828087, 0.555414)
+bones/12/rotation = Quaternion(0.339956, 0.723632, -0.302857, 0.518714)
+bones/13/rotation = Quaternion(0.712183, 0.263091, 0.171019, 0.627958)
 bones/14/rotation = Quaternion(-0.391337, 0.035601, -0.0212807, 0.919312)
 bones/16/rotation = Quaternion(-0.0287365, 0.18791, -0.0477071, 0.980606)
 bones/18/rotation = Quaternion(0.615375, 0.363085, 0.519908, -0.468166)
 bones/22/rotation = Quaternion(0.615375, -0.363085, -0.519908, -0.468166)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skin/character/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.910512, -0.0475395, 0.41074, -0.12468, -0.915565, -0.382355, 0.394236, -0.39935, 0.827706, -0.572931, 0.0833862, 0.179518)
+transform = Transform3D(-0.650296, -0.0186688, 0.759451, 0.0441675, 0.997078, 0.0623297, -0.758396, 0.0740756, -0.647571, -1.06362, 3.1955, -1.04695)
 bone_name = "Hand.R"
 bone_idx = 14
 
@@ -87,7 +108,20 @@ stream = ExtResource("3_dgiqw")
 [node name="JumpSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_fgrjy")
 
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_mw0t0")
+
 [node name="DustParticles" type="GPUParticles3D" parent="."]
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3mq15")
+}
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1t3y2")
+}
 
 [connection signal="body_entered" from="Skin/character/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="Skin/character/AnimationPlayer" to="Skin" method="_on_animation_player_animation_finished"]

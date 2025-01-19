@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgblw6qba8867"]
+[gd_scene load_steps=19 format=3 uid="uid://cgblw6qba8867"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_7qejv"]
 [ext_resource type="PackedScene" uid="uid://vlnju5wdjwu4" path="res://UI/pause_menu.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cf5bpotkorqf4" path="res://Level/EveningSkyHDRI032A_2K-HDR.exr" id="1_iuovl"]
 [ext_resource type="Material" uid="uid://cq3u5gbb8dkm5" path="res://Materials/LavaTiles.tres" id="1_myye2"]
@@ -7,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b40m2h11vosx0" path="res://Player/player.tscn" id="2_xqvsl"]
 [ext_resource type="Texture2D" uid="uid://8lpqw3er0h4l" path="res://Materials/coast_sand_04/coast_sand_04_nor_gl_4k.jpg" id="3_7qql8"]
 [ext_resource type="Texture2D" uid="uid://ck8htfwtbksj1" path="res://Materials/coast_sand_04/coast_sand_04_rough_4k.jpg" id="4_u5eij"]
+[ext_resource type="Script" path="res://HealthBar.gd" id="6_qe5w4"]
 [ext_resource type="PackedScene" uid="uid://cgf1ro5wure86" path="res://Level/Temple.tscn" id="7_e6mty"]
 [ext_resource type="PackedScene" uid="uid://bx2y3sxd7yxjh" path="res://Enemies/Caterpillar/CaterpillarController.tscn" id="8_fltoj"]
+[ext_resource type="PackedScene" uid="uid://ony5fmh005rw" path="res://UI/final_screen.tscn" id="8_lcode"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7xc8u"]
 panorama = ExtResource("1_iuovl")
@@ -42,6 +45,7 @@ bg_color = Color(0.0509804, 0.0509804, 0.0509804, 0.509804)
 bg_color = Color(0.552941, 0.12549, 0.156863, 1)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_7qejv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -66,13 +70,14 @@ material = SubResource("StandardMaterial3D_d3vmg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="EnemyHealth" type="Control" parent="CanvasLayer"]
+[node name="HealthBar" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("6_qe5w4")
 
-[node name="PlayerHealthLabel" type="Label" parent="CanvasLayer/EnemyHealth"]
+[node name="PlayerHealthLabel" type="Label" parent="CanvasLayer/HealthBar"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 17.0
@@ -80,7 +85,7 @@ offset_right = 99.0
 offset_bottom = 40.0
 text = "You"
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/EnemyHealth"]
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/HealthBar"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 45.0
@@ -91,7 +96,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_agivn")
 value = 60.0
 show_percentage = false
 
-[node name="EnemyHealthLabel" type="Label" parent="CanvasLayer/EnemyHealth"]
+[node name="EnemyHealthLabel" type="Label" parent="CanvasLayer/HealthBar"]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 540.0
@@ -99,7 +104,7 @@ offset_right = 418.0
 offset_bottom = 563.0
 text = "Caterpillar"
 
-[node name="EnemyHealthBar" type="ProgressBar" parent="CanvasLayer/EnemyHealth"]
+[node name="EnemyHealthBar" type="ProgressBar" parent="CanvasLayer/HealthBar"]
 layout_mode = 0
 offset_left = 335.0
 offset_top = 568.0
@@ -112,11 +117,13 @@ show_percentage = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_ig7tw")]
 
+[node name="FinalScreen" parent="CanvasLayer" instance=ExtResource("8_lcode")]
+
 [node name="Player" parent="." instance=ExtResource("2_xqvsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41.5567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.6437)
 
 [node name="CaterpillarController" parent="." instance=ExtResource("8_fltoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99677, 4.01872, -25.5317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99677, 4.01872, -4.4064)
 
 [node name="Spawner" type="Node3D" parent="."]
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://cudxkqth8q7ij"]
+
+[ext_resource type="Shader" path="res://UI/blur.gdshader" id="1_6elrt"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_oobmu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eya7x"]
+shader = ExtResource("1_6elrt")
+shader_parameter/blur = 2.5
+shader_parameter/brightness = 0.8
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oobmu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_eya7x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.396916, 0.0277672, 0.0641486, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Chrysalis Smasher"
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Fullscreen" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/GridContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
